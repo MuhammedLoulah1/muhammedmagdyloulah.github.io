@@ -1,83 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muhammed Magdy Loulah - CV</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="header">
-    <div class="profile-picture">
-      <img src="your-profile-picture.jpg" alt="Muhammed Magdy Loulah">
-    </div>
-    <h1>Muhammed Magdy Loulah</h1>
-    <p class="contact-info">
-      Shebeen El-Koum, Menoufia, Egypt | +201029060276 |
-      <a href="mailto:mohamedmagdy204@law.usc.edu.eg">mohamedmagdy204@law.usc.edu.eg</a>
-      | <a href="https://www.linkedin.com/in/muhammed-magdy-loulah-17626221a/">LinkedIn Profile</a>
-    </p>
-  </header>
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Home
+  screenshotPath: ../images/template-previews/home.png
+  scaffoldSchemaPath:
+-->
+{% extends "./layouts/base.hubl.html" %}
 
-  <main class="main">
-    <section class="summary">
-      <h2>Summary</h2>
-      <p>
-        I am an aspiring Digital Marketing Associate with strong ability in SEO, social media marketing, and e-commerce. Certified by Google and HubSpot, with a proven record of driving online engagement and sales through data-driven strategies. Eager to contribute to dynamic organizations by optimizing digital marketing efforts.
-      </p>
-    </section>
+{% block body %}
+  {% dnd_area "dnd_area"
+    label="Main section",
+  %}
 
-    <section class="experience">
-      <h2>Experience</h2>
-      <div class="job">
-        <h3>Freelance Digital Marketing Consultant</h3>
-        <p>March 2023 - August 2024</p>
-        <ul>
-          <li>Developed and optimized Google Business Profile for a local clinic, achieving 3,184 mobile views and 90 desktop views on Google Search; 666 mobile views and 28 desktop views on Google Maps.</li>
-          <li>Conducted in-depth keyword research, implementing effective SEO strategies.</li>
-          <li>Created engaging media and content, resulting in 306 interactions with the call button and 5 initiated conversations, 750 requests for directions.</li>
-          <li>Integrated clinic location with Google Maps for accurate information.</li>
-        </ul>
-      </div>
-    </section>
+    {# Hero banner #}
 
-    <section class="education">
-      <h2>Education</h2>
-      <div class="degree">
-        <h3>Bachelor of Law</h3>
-        <p>Faculty of Law, English Section - University of Sadat City</p>
-        <p>Expected Graduation: 2027 | GPA: 3.61</p>
-      </div>
-      <div class="achievement">
-        <h3>Trainee</h3>
-        <p>National Institute for Governance & Sustainable Development</p>
-      </div>
-    </section>
+    {% include_dnd_partial
+      path="../sections/hero-banner.hubl.html",
+      context={
+        "background_color": light_section_2_background_color
+      }
+    %}
 
-    <section class="skills">
-      <h2>Skills</h2>
-      <ul class="skills-list">
-        <li><strong>Hard Skills:</strong></li>
-        <li>SEO, Content Marketing, Social Media Marketing</li>
-        <li>Email Marketing, Data Analysis Advertising (Pay-Per-Click)</li>
-        <li>Graphic Design (Canva, Adobe Photoshop), CRM</li>
-        <li><strong>Soft Skills:</strong></li>
-        <li>Creativity, Communication, Time Management</li>
-        <li>Team Collaboration, Problem-Solving, Adaptability</li>
-      </ul>
-    </section>
+    {# Logo gallery #}
 
-    <section class="achievements">
-      <h2>Achievements</h2>
-      <ul>
-        <li>Enhanced e-commerce store sales through effective SEO strategies.</li>
-        <li>Developed social media campaigns that boosted customer engagement.</li>
-      </ul>
-    </section>
+    {% include_dnd_partial
+      path="../sections/logo-gallery.hubl.html",
+      context={
+        "background_color": light_section_2_background_color
+      }
+    %}
 
-    <section class="extracurricular">
-      <h2>Extracurricular Activities</h2>
-      <ul>
-        <li>Human Rights Certifications: Training on diversity and acceptance from the German Friedrich Naumann Foundation in partnership with the Egyptian Organization for Human Rights.</li>
-        <li>Training course on spreading the culture of human rights from the Egyptian Organization for Human Rights.</li>
-        <li>Participant in the final conference of a project to promote a culture of human rights with the Ministry of Social Cooperation.</li
+    {# Heading with three cards #}
+
+    {% include_dnd_partial
+      path="../sections/heading-with-three-cards.hubl.html",
+      context={
+        "background_color": dark_section_1_background_color,
+        "section_variant": "section_variant_4",
+        "card_variant": "card_variant_4",
+      }
+    %}
+
+    {# Multi-row alternating #}
+
+    {% include_dnd_partial path="../sections/multi-row-alternating.hubl.html" %}
+
+    {# Testimonial slider #}
+
+    {% dnd_section
+      background_color={{ light_section_1_background_color }}
+    %}
+      {% dnd_module
+        path="../components/modules/testimonial_slider",
+        groupTestimonial=[
+          {
+            "groupQuote": {
+              "quote": template_translations.home_testimonial_quote.message
+            },
+            "groupAuthor": {
+              "authorName": template_translations.home_testimonial_author_name.message,
+              "authorTitle": template_translations.home_testimonial_author_title.message,
+              "authorImage": {}
+            },
+            "groupImage": {
+              "showImage": true,
+              "image": {
+                "alt": "",
+                "loading": "lazy",
+                "max_height": 300,
+                "max_width": 300,
+                "size_type": "auto_custom_max",
+                "src": get_asset_url("../images/testimonial-author-large.png")
+              }
+            },
+            "groupLink": {
+              "linkText": template_translations.home_testimonial_link_text.message,
+              "link": {}
+            }
+          },
+          {
+            "groupQuote": {
+              "quote": template_translations.home_testimonial_quote.message
+            },
+            "groupAuthor": {
+              "authorName": template_translations.home_testimonial_author_name.message,
+              "authorTitle": template_translations.home_testimonial_author_title.message,
+              "authorImage": {}
+            },
+            "groupImage": {
+              "showImage": true,
+              "image": {
+                "alt": "",
+                "loading": "lazy",
+                "max_height": 300,
+                "max_width": 300,
+                "size_type": "auto_custom_max",
+                "src": get_asset_url("../images/testimonial-author-large.png")
+              }
+            },
+            "groupLink": {
+              "linkText": template_translations.home_testimonial_link_text.message,
+              "link": {}
+            }
+          },
+          {
+            "groupQuote": {
+              "quote": template_translations.home_testimonial_quote.message,
+            },
+            "groupAuthor": {
+              "authorName": template_translations.home_testimonial_author_name.message,
+              "authorTitle": template_translations.home_testimonial_author_title.message,
+              "authorImage": {},
+            },
+            "groupImage": {
+              "showImage": true,
+              "image": {
+                "alt": "",
+                "loading": "lazy",
+                "max_height": 300,
+                "max_width": 300,
+                "size_type": "auto_custom_max",
+                "src": get_asset_url("../images/testimonial-author-large.png")
+              }
+            },
+            "groupLink": {
+              "linkText": template_translations.home_testimonial_link_text.message,
+              "link": {}
+            }
+          }
+        ],
+        groupStyle={
+          "cardStyleVariant": "card_variant_2"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+    {# Metrics #}
+
+    {% include_dnd_partial
+      path="../sections/metrics.hubl.html",
+      context={
+        "background_color": light_section_3_background_color,
+      }
+    %}
+
+    {# Call to action #}
+
+    {% include_dnd_partial path="../sections/call-to-action.hubl.html" %}
+  {% end_dnd_area %}
+{% endblock body %}
